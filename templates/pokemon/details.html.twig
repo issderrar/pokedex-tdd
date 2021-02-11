@@ -7,6 +7,15 @@
     <a href="{{ path('home') }}">Retour</a>
     
     <h1>Hello {{ pokemon.name|capitalize }} !</h1>
-    
-    {% dump(pokemon) %}
+
+    <div class="card">
+        <img src="{{ pokemon.sprites.other["official-artwork"].front_default }}" alt="Avatar" style="width:100%">
+        <div class="container">
+            <h4><b>{{ pokemon.id }} {{ pokemon.name|capitalize }}</b></h4>
+            {% for type in pokemon.types %}
+                <span>{{ type.type.name|upper }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock %}

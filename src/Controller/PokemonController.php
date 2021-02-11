@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Service\PokemonApiConsumer;
 use PokePHP\PokeApi;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -13,12 +14,14 @@ class PokemonController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(PokemonApiConsumer $apiConsumer): Response
+    public function index(Request $request,PokemonApiConsumer $apiConsumer): Response
     {
-        $offset = 0;
+        $limit = $request->query->get('limit',151);
+        $offset = $request->query->get('offset',0);
+
         return $this->render('pokemon/index.html.twig', [
             'controller_name' => 'PokemonController',
-            'pokemons' => $apiConsumer->getAllPokemons(20, $offset)["results"],
+            'pokemons' => $apiConsumer->getAllPokemons($limit, $offset)["results"],
             'offset' => $offset
         ]);
     }
