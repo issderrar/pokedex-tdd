@@ -13,12 +13,13 @@ class PokemonController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(): Response
+    public function index(PokemonApiConsumer $apiConsumer): Response
     {
-        $api = new PokeApi();
+        $offset = 0;
         return $this->render('pokemon/index.html.twig', [
             'controller_name' => 'PokemonController',
-            'pokemons' => $api->resourceList('pokemons')
+            'pokemons' => $apiConsumer->getAllPokemons(20, $offset)["results"],
+            'offset' => $offset
         ]);
     }
 
@@ -29,7 +30,7 @@ class PokemonController extends AbstractController
     {
         return $this->render('pokemon/details.html.twig', [
             'controller_name' => 'PokemonController',
-            'pokemon' => $apiConsumer->fetchPokemon($pokemonId)
+            'pokemon' => $apiConsumer->getPokemon($pokemonId)
         ]);
     }
 }

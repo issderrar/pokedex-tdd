@@ -1,0 +1,48 @@
+* {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto;
+}
+
+a {
+    all: unset;
+}
+a:hover {
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    background: orangered;
+}
+
+ul {
+    width: 30%;
+}
+
+#pokemonslist li:nth-child(even) {
+    background: whitesmoke;
+}
+
+#pokemonslist li:nth-child(odd) {
+    background: lightgray;
+}
+
+#pokemonslist {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.pokemonLink {
+    display: flex;
+    align-items: center;
+}
+
+.pokemon p {
+    margin-left: 1em;
+    font-size: 2em;
+}
+
+

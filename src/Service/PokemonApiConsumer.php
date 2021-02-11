@@ -17,23 +17,35 @@ class PokemonApiConsumer
     }
 
 
-    public function fetchPokemons()
+    public function getAllPokemons($limit = 151, $offset = 0)
     {
-        $response = $this->client->request(
-            'GET',
-            $this->baseUrl.'pokemon'
-        );
+        $url = 'pokemon/?limit='.$limit.'&offset='.$offset;
 
-        return $response->toArray();
+        return $this->sendRequest($url);
     }
 
-    public function fetchPokemon($index)
+    public function getPokemon($index)
+    {
+        $url = 'pokemon/'.$index;
+
+        return $this->sendRequest($url);
+    }
+
+    /**
+     * @param string $url
+     */
+    public function sendRequest($url)
     {
         $response = $this->client->request(
             'GET',
-            $this->baseUrl.'pokemon/' . $index
+            $this->baseUrl.$url
         );
 
+        if ($response->getStatusCode() != 200) {
+            return json_encode('An error has occured.');
+        }
+
         return $response->toArray();
+
     }
 }
