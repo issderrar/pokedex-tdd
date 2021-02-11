@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ pokemon.name }}{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('home') }}">Retour</a>
+    
+    <h1>Hello {{ pokemon.name|capitalize }} !</h1>
+    
+    {% dump(pokemon) %}
+{% endblock %}
