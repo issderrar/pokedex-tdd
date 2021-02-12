@@ -2,26 +2,22 @@
 
 {% set index = offset + 1 %}
 
-{% block title %}Hello PokemonController!{% endblock %}
+{% block title %}Pokedex - Pokemon's list{% endblock %}
 
 {% block body %}
-    <h1>Hello {{ controller_name }}! </h1>
+    <h1>Pokedex - Pokemon's list</h1>
 
     <div id="pokemonslist">
-        <ul>
-            {% for key,pokemon in pokemons %}
-                <li class="pokemon">
-                    <a class="pokemonLink" href="{{ path('details',{'pokemonId' : pokemon.name }) }}">
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ index }}.png"
-                             alt="">
-                        <p>{{ index }} {{ pokemon.name|capitalize }}</p>
-                    </a>
-                </li>
-                {% set index = index +1 %}
-            {% endfor %}
-        </ul>
+        {% for key,pokemon in pokemons %}
+            <a href="{{ path('details',{'pokemonId' : index}) }}">
+                <div class="pokemonCard">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{ index }}.png"
+                         alt="" style="width:100%">
+                        <h4><b>{{ index }} {{ pokemon.name|capitalize }}</b></h4>
+                </div>
+            </a>
+            {% set index = index +1 %}
+        {% endfor %}
     </div>
 
-
-    {% dump(pokemons) %}
 {% endblock %}

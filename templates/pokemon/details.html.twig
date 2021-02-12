@@ -4,18 +4,24 @@
 
 {% block body %}
 
-    <a href="{{ path('home') }}">Retour</a>
-    
-    <h1>Hello {{ pokemon.name|capitalize }} !</h1>
+    <div class="back_bar">
+    <a href="{{ path('home') }}">Revenir a la liste des Pokémon</a>
+    </div>
 
-    <div class="card">
-        <img src="{{ pokemon.sprites.other["official-artwork"].front_default }}" alt="Avatar" style="width:100%">
-        <div class="container">
-            <h4><b>{{ pokemon.id }} {{ pokemon.name|capitalize }}</b></h4>
-            {% for type in pokemon.types %}
-                <span>{{ type.type.name|upper }}</span>
-            {% endfor %}
+    <h1>{{ pokemon.name|capitalize }}'s card !</h1>
+    <div class="fiche">
+
+        <div class="profile_header">
+            <img id="picture" src="{{ pokemon.sprites.other["official-artwork"].front_default }}" alt="">
+            <div class="pokemon_name">
+                <p><b>{{ pokemon.name|capitalize }}</b></p>
+                <p id="index"><b>#{{ pokemon.id }} </b></p>
+                {% for type in pokemon.types %}
+                    <span>{{ type.type.name|upper }}</span>
+                {% endfor %}
+            </div>
         </div>
+        <div class=""></div>
     </div>
 
 {% endblock %}

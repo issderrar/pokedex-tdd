@@ -1,8 +1,16 @@
+body {
+    background-color: #1c1c1c;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+}
 * {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    font-family: Roboto;
+    font-family: 'Raleway', sans-serif;
+    box-sizing: border-box;
+
 }
 
 a {
@@ -14,51 +22,81 @@ a:hover {
 
 h1 {
     text-align: center;
-    background: orangered;
+    background: white;
+    color: red;
+    font-weight: bold;
+    font-size: 2.5em;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
-ul {
-    width: 30%;
-}
-
-#pokemonslist li:nth-child(even) {
-    background: whitesmoke;
-}
-
-#pokemonslist li:nth-child(odd) {
-    background: lightgray;
+.container {
+    background-color: whitesmoke;
+    width: 60%;
 }
 
 #pokemonslist {
-    display: flex;
-    justify-content: center;
-    margin-top: 5%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    padding: 0 1% ;
 }
 
-.pokemonLink {
-    display: flex;
-    align-items: center;
-}
-
-.pokemon p {
-    margin-left: 1em;
-    font-size: 2em;
-}
-
-.card {
-    /* Add shadows to create the "card" effect */
+.pokemonCard {
+    font-size: 1.5em;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 5%;
+    background-color: whitesmoke;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 10%;
 }
-
-/* On mouse-over, add a deeper shadow */
-.card:hover {
+.pokemonCard:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-/* Add some padding inside the card container */
-.container {
-    padding: 2px 16px;
+.pokemonCard h4 {
+    padding-bottom: 10px;
 }
+
+.back_bar {
+    width: 100%;
+    background-color: #171a1d;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.back_bar a {
+    color: white;
+    font-weight: bold;
+}
+
+#picture {
+    width: 20%;
+}
+.fiche {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background: whitesmoke;
+    padding: 5px;
+}
+.profile_header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background: #dedcdc;
+    padding: 10px 0;
+}
+.pokemon_name {
+    font-size: 2em;
+    text-align: center;
+}
+.pokemon_name span {
+    font-size: 0.8em;
+}
+
+
+
 
